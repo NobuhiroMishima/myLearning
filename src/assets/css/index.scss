@@ -1,0 +1,68 @@
+@use "./component" as *;
+
+body{
+    background-color: teal;
+}
+
+.header{
+    max-width: $max-width;
+    height: $navheight;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__nav{
+        &__list{
+            list-style: none;
+            padding-left: 0;
+            color: white;
+        }
+    }
+}
+
+.container{
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.movies{
+    color: white;
+    margin-bottom: 20px;
+    &__cards{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+}
+
+.movie{
+    width: 320px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px black;
+    background-color: white;
+
+    &__title{
+        font-size: 18px;
+    }
+
+    &__rate{
+        margin-bottom: 10px;
+    }
+
+    &__img{
+        margin-bottom: 10px;
+    }
+
+    &__instructor, &__comment{
+        margin-bottom: 10px;
+        font-size: 14px;
+        &__title{
+            font-weight: 700;
+        }
+    }
+}
