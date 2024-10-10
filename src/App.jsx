@@ -13,8 +13,8 @@ function App() {
       <Header />
       <div className="container">
         <Routes>
-          {/* <Route path="/" element={<Movies />} /> */}
-          <Route path="/" element={<Movie />} />
+          <Route path="/" element={<Movies />} />
+          <Route path="/detail" element={<Movie />} />
         </Routes>
       </div>
     </BrowserRouter>
