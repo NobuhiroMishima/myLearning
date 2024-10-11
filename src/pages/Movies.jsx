@@ -1,17 +1,9 @@
-import { useEffect, useState } from "react";
-import moviesApi from "../api/movies";
+
 import Card from "../components/Card";
+import { useMovies } from "../contexts/MovieContext";
 
 const Movies = () => {
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      const res = await moviesApi.getAll();
-      setMovies(res);
-    };
-    fetchMovies();
-  }, []);
+  const movies = useMovies();
 
   return (
     <>

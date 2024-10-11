@@ -13,6 +13,10 @@ const moviesApi = {
         const result = await axios.get(ENDPOINT_URL);
         return result.data;
     },
+    async getOne(id){
+        const result = await axios.get(`${ENDPOINT_URL}/${id}`);
+        return result.data;
+    }
 };
 
 export default moviesApi;

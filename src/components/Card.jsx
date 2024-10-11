@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Card = ({movie}) => {
   return (
-    <Link className="movie" to="/detail">
+    <Link className="movie" to={`/movies/${movie._id}`}>
       <h3 className="movie__title">{movie.title}</h3>
       <div className="movie__rate">
         <FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />

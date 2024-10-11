@@ -6,13 +6,13 @@ import InputMovieComment from "./forms/InputMovieComment";
 import InputMovieImg from "./forms/InputMovieImg";
 import InputMovieRating from "./forms/InputMovieRating";
 
-const EditModal = ({ toggleEditModal }) => {
+const EditModal = ({ toggleEditModal, movie, setMovie }) => {
   const clickCancel = () => toggleEditModal();
 
   return (
     <div className="modal-container">
       <form className="modal form">
-      <h3 className="movie__title">動画のタイトルを編集</h3>
+      <h3 className="movie__title">{`${movie.title}を編集`}</h3>
         <InputMovieTitle />
         <InputMovieInstructor />
         <InputMovieComment />
