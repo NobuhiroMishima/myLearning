@@ -5,19 +5,22 @@ import { createPortal } from "react-dom";
 import Button from "../components/Button";
 import EditModal from "../components/EditModal";
 import DeleteModal from "../components/DeleteModal";
+import { useNavigate } from "react-router-dom";
 
-const ModalPortal = ({children}) => {
-    const target = document.querySelector('.container');
-    return createPortal(children, target)
-}
+const ModalPortal = ({ children }) => {
+  const target = document.querySelector(".container");
+  return createPortal(children, target);
+};
 
 const Movie = () => {
-
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const toggleEditModal = () => setIsEditModalOpen(prev => !prev);
+  const toggleEditModal = () => setIsEditModalOpen((prev) => !prev);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const toggleDeleteModal = () => setIsDeleteModalOpen(prev => !prev);
+  const toggleDeleteModal = () => setIsDeleteModalOpen((prev) => !prev);
+
+  const navigate = useNavigate();
+  const goHome = () => navigate('/');
 
   return (
     <>
@@ -45,22 +48,32 @@ const Movie = () => {
           <FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />
         </div>
         <div className="action-area">
-          <Button className="green" onClick={toggleEditModal}>編集</Button>
-          <Button className="red" onClick={toggleDeleteModal}>削除</Button>
+          <Button className="green" onClick={toggleEditModal}>
+            編集
+          </Button>
+          <Button className="red" onClick={toggleDeleteModal}>
+            削除
+          </Button>
         </div>
       </div>
 
       {isEditModalOpen && (
         <ModalPortal>
-            <EditModal toggleEditModal={toggleEditModal} />
+          <EditModal toggleEditModal={toggleEditModal} />
         </ModalPortal>
       )}
 
       {isDeleteModalOpen && (
         <ModalPortal>
-            <DeleteModal toggleDeleteModal={toggleDeleteModal} />
+          <DeleteModal toggleDeleteModal={toggleDeleteModal} />
         </ModalPortal>
       )}
+
+      <div className="go-home">
+        <Button className="gray" onClick={goHome}>
+          戻る
+        </Button>
+      </div>
     </>
   );
 };

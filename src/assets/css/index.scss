@@ -82,7 +82,7 @@ a{
 }
 
 .detail{
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
     padding: 24px;
     width: 100%;
     max-width: 600px;
@@ -103,6 +103,10 @@ a{
     padding: 20px;
     display: flex;
     justify-content: space-around;
+}
+
+.go-home{
+    text-align: center;
 }
 
 .btn{
@@ -141,16 +145,85 @@ a{
     z-index: 100;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.40);
+    background-color: rgba(0, 0, 0, 0.60);
     display: flex;
     justify-content: center;
     align-items: center;
 
     & .modal{
+        padding: 24px;
         margin: 0 auto;
         max-width: 600px;
         width: 90%;
-        height: 600px;
         background-color: #CCE6E6;
+
+        &.form{
+            & .movie__title{
+                text-align: center;
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            & .alert{
+                text-align: center;
+                font-weight: 700;
+                color: red;
+            }
+
+            & .formpart{
+                display: flex;
+                row-gap: 10px;
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+
+            & .label{
+
+                &__title, &__instructor, &__rating{
+                    font-size: 14px;
+                    font-weight: 700;
+                }
+
+            }
+
+            & .input{
+
+                &__title, &__instructor{
+                    padding: 16px;
+                    width: 100%;
+                    font-size: 16px;
+                    color: white;
+                    background-color: teal;
+                    border-radius: 5px;
+                    border: solid 2px darkslategray;
+
+                    &::placeholder{
+                        color: white;
+                    }
+                }
+            }
+
+            & .textarea{
+
+                &__comment{
+                    padding: 16px;
+                    width: 100%;
+                    font-size: 16px;
+                    color: white;
+                    background-color: teal;
+                    border-radius: 5px;
+                    border: solid 2px darkslategray;
+
+                    &::placeholder{
+                        color: white;
+                    }
+                }
+            }
+
+        }
     }
+}
+
+label{
+    display: block;
 }
