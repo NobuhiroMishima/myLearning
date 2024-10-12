@@ -11,6 +11,12 @@ const reducer = (movies, { type, payload }) => {
   switch (type) {
     case "movie/init":
       return payload;
+    case "movie/update":
+      const updateMovies = movies.filter(movie => (
+        movie._id !== payload._id
+      ));
+      updateMovies.unshift(payload)
+      return updateMovies
     default:
       return movies;
   }

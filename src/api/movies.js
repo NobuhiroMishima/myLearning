@@ -16,6 +16,10 @@ const moviesApi = {
     async getOne(id){
         const result = await axios.get(`${ENDPOINT_URL}/${id}`);
         return result.data;
+    },
+    async patch(movie){
+        const result = await axios.patch(`${ENDPOINT_URL}/${movie._id}`, movie);
+        return result.data;
     }
 };
 
