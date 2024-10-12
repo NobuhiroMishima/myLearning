@@ -1,23 +1,25 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import Rating from "react-rating";
 
-const Card = ({movie}) => {
+const Card = ({ movie }) => {
   return (
     <Link className="movie" to={`/movies/${movie._id}`}>
       <h3 className="movie__title">{movie.title}</h3>
       <div className="movie__rate">
-        <FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />
-        <FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />
-        <FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />
-        <FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />
-        <FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />
+        {
+          <Rating
+          emptySymbol={<FontAwesomeIcon icon={faStar} style={{ color: "#e4dccb" }} />}
+          fullSymbol={<FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />}
+          fractions={1}
+          initialRating={movie.rating}
+          readonly={true}
+          />
+        }
       </div>
       <div className="movie__img">
-        <img
-          src={`/src/assets/images/${movie.img}`}
-          alt={movie.title}
-        />
+        <img src={`/src/assets/images/${movie.img}`} alt={movie.title} />
       </div>
       <div className="movie__instructor">
         <p className="movie__instructor__title">動画作成者</p>

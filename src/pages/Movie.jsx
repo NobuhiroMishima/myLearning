@@ -7,6 +7,8 @@ import EditModal from "../components/EditModal";
 import DeleteModal from "../components/DeleteModal";
 import { useParams, useNavigate } from "react-router-dom";
 import moviesApi from "../api/movies";
+import Rating from "react-rating";
+
 
 
 const ModalPortal = ({ children }) => {
@@ -56,11 +58,13 @@ const Movie = () => {
           <p className="movie__comment__body">{movie.comment}</p>
         </div>
         <div className="movie__rate">
-          <FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />
-          <FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />
-          <FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />
-          <FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />
-          <FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />
+        <Rating
+          emptySymbol={<FontAwesomeIcon icon={faStar} style={{ color: "#e4dccb" }} />}
+          fullSymbol={<FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />}
+          fractions={1}
+          initialRating={movie.rating}
+          readonly={true}
+          />
         </div>
         <div className="action-area">
           <Button className="green" onClick={toggleEditModal}>
