@@ -14,10 +14,10 @@ POST http://localhost:8080/api/movies
 Content-Type: application/json
 
 {
-    "title": "開発ウェブ開発WordPress【2024最新】中級者向けWordPress自作テーマ講座（カスタム投稿、ウィジェット実装などが学べる）",
-    "instructor": "はしもと よしみつ",
-    "rating": 4,
-    "comment": "静的ファイルからCMS化するための方法がわかりやすく説明されていました。ただこちらの動画も関数の説明がイマイチだったのでWordPressの習得はあまり進んでいないように感じました。"
+    "title": "test",
+    "instructor": "test",
+    "rating": 3,
+    "comment": "test"
 }
 
 ###

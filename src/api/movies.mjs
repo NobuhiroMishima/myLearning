@@ -26,6 +26,10 @@ const moviesApi = {
     const result = await axios.patch(`${ENDPOINT_URL}/${id}`, formData);
     return result.data;
   },
+  async delete(id) {
+    const result = await axios.delete(`${ENDPOINT_URL}/${id}`);
+    return result.data;
+  },
 };
 
 export default moviesApi;
