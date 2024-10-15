@@ -2,6 +2,7 @@ import express from 'express';
 import { body } from "express-validator"
 import {getAllMovies, getMovieById, deleteMovie, registMovie, updateMovie } from '../controllers/movies.mjs';
 import { requestErrorHandler } from '../helpers/helper.mjs';
+import upload from '../helpers/upload.mjs'
 
 const router = express.Router();
 
@@ -24,6 +25,7 @@ router.patch('/:id',
     body('instructor').optional().notEmpty(),
     body('rating').optional().notEmpty().isInt({min: 1, max: 5}),
     body('comment').optional().notEmpty(),
+    upload.single('img'),
     requestErrorHandler(updateMovie)
 )
 

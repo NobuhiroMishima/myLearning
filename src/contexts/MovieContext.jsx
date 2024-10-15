@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import moviesApi from "../api/movies";
+import moviesApi from "../api/movies.mjs";
 
 const MovieContext = createContext();
 const MovieDispatchContext = createContext();

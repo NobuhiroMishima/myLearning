@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 build
+uploads
 .env
 dist
 dist-ssr

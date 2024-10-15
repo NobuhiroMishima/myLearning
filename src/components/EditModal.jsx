@@ -7,7 +7,7 @@ import InputMovieRating from "./forms/InputMovieRating";
 import { useDispatchMovies } from "../contexts/MovieContext";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import moviesApi from "../api/movies";
+import moviesApi from "../api/movies.mjs";
 
 const EditModal = ({ toggleEditModal, movie, setMovie }) => {
   const clickCancel = () => toggleEditModal();
@@ -15,13 +15,18 @@ const EditModal = ({ toggleEditModal, movie, setMovie }) => {
 
   const [editMovie, setEditMovie] = useState({ ...movie });
 
-  const handleChangeRating = (rate) =>
-    setEditMovie({ ...editMovie, rating: rate });
+  const handleChangeRating = (rate) => setEditMovie({ ...editMovie, rating: rate });
+
+  const handleChangeImage = (e) => {
+    const file = e.target.files[0];
+    if(file) setValue("img", file)
+  }
 
   const {
     register,
     reset,
     handleSubmit,
+    setValue,
     formState: { errors }
   } = useForm({
     mode: "onSubmit",
@@ -30,30 +35,29 @@ const EditModal = ({ toggleEditModal, movie, setMovie }) => {
       title: editMovie.title,
       instructor: editMovie.instructor,
       comment: editMovie.comment,
+      img: null
     },
   });
 
   const [error, setError] = useState("");
   const onSubmit = async (inputs) => {
-    const formedMovie = {
-      _id: editMovie._id,
-      title: inputs.title,
-      instructor: inputs.instructor,
-      comment: inputs.comment,
-      rating: editMovie.rating,
-      img: editMovie.img,
-    };
-
-    console.log("Submitting formedMovie:", formedMovie); // 送信データの確認
+    const formData = new FormData();
+    formData.append("title", inputs.title);
+    formData.append("instructor", inputs.instructor);
+    formData.append("comment", inputs.comment);
+    formData.append("rating", editMovie.rating);
+    if (inputs.img) {
+      formData.append("img", inputs.img);
+    }
 
     try {
-      const req = await moviesApi.patch(formedMovie);
+      const req = await moviesApi.patch(editMovie._id, formData);
       dispatch({ type: "movie/update", payload: req });
       reset();
       setMovie(req);
       toggleEditModal();
     } catch (e) {
-      console.log("エラーが発生しました。, e");
+      console.log("エラーが発生しました。", e);
       setError(e);
     }
   };
@@ -65,10 +69,11 @@ const EditModal = ({ toggleEditModal, movie, setMovie }) => {
         <InputMovieTitle register={register} errors={errors} />
         <InputMovieInstructor register={register} errors={errors} />
         <InputMovieComment register={register} errors={errors} />
-        <InputMovieImg register={register} />
+        <InputMovieImg register={register} handleChangeImage={handleChangeImage} />
         <InputMovieRating
           rating={editMovie.rating}
           onChange={handleChangeRating}
+          currentImage={movie.img} // オプションで現在の画像を表示
         />
 
         <div className="error-msg">{error}</div>

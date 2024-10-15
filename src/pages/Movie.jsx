@@ -45,7 +45,7 @@ const Movie = () => {
         <h3 className="movie__title">{movie.title}</h3>
         <div className="movie__img">
           <img
-            src={`/src/assets/images/${movie.img}`}
+            src={`/server/${movie.img}`}
             alt="【2023年最新】【JavaScript＆CSS】ガチで学びたい人のためのWEB開発実践入門（フロントエンド編）"
           />
         </div>

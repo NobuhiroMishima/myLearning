@@ -40,7 +40,7 @@ async function updateMovie (req, res) {
         const errs =errors.array();
         return res.status(400).json(errs)
     }
-    const { title, instructor, img, rating, comment} = req.body;
+    const { title, instructor, rating, comment} = req.body;
     const _id = req.params.id;
     const movie = await Movie.findById(_id);
 
@@ -48,9 +48,13 @@ async function updateMovie (req, res) {
 
     if(title !== undefined) movie.title = title;
     if(instructor !== undefined) movie.instructor = instructor;
-    if(img !== undefined) movie.img = img;
     if(rating !== undefined) movie.rating = rating;
     if(comment !== undefined) movie.comment = comment;
+    if(req.file) {
+        movie.img = `/uploads/${req.file.filename}`;
+    }
+
+
     const updateMovie = await movie.save();
     res.json(updateMovie)
 }

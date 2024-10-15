@@ -6,7 +6,7 @@ http://localhost:8080/api/movies/6709346b8fe18d726130a5a1
 
 ###
 
-DELETE http://localhost:8080/api/movies/670532cf86e797619708ed89
+DELETE http://localhost:8080/api/movies/670db8d2ab8f37463e496fc7
 
 ###
 
@@ -14,18 +14,17 @@ POST http://localhost:8080/api/movies
 Content-Type: application/json
 
 {
-    "title": "ちゃんと学ぶ、WordPress テーマ開発講座",
-    "instructor": "たにぐち まこと",
-    "img": "TaniguchiMakoto_wordpress.jpg",
-    "rating": 3,
-    "comment": "PHPを学習したのでCMS分野も勉強しようと思い学習を始めました。関数の紹介はあるのですが、どういうケースで使うか、なぜそうなるか、などの説明が省略されており学習コンテンツとしては微妙でした。"
+    "title": "開発ウェブ開発WordPress【2024最新】中級者向けWordPress自作テーマ講座（カスタム投稿、ウィジェット実装などが学べる）",
+    "instructor": "はしもと よしみつ",
+    "rating": 4,
+    "comment": "静的ファイルからCMS化するための方法がわかりやすく説明されていました。ただこちらの動画も関数の説明がイマイチだったのでWordPressの習得はあまり進んでいないように感じました。"
 }
 
 ###
 
-PATCH http://localhost:8080/api/movies/67053c1dd1f4b81e148459ff
+PATCH http://localhost:8080/api/movies/670db8d2ab8f37463e496fc7
 Content-Type: application/json
 
 {
-    "title": "テストタイトル"
+    "img": ""
 }
