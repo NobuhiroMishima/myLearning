@@ -27,6 +27,7 @@ const DeleteModal = ({ toggleDeleteModal, movie }) => {
       <form className="modal form">
       <h3 className="movie__title">{`${movie.title}を削除しますか？`}</h3>
       <p className="alert">一度削除すると元には戻せません。</p>
+      <div className="error-msg text-center">{error}</div>
         <div className="action-area">
           <Button className="gray" onClick={toggleDeleteModal}>
             戻る

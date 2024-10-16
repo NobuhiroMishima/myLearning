@@ -10,6 +10,7 @@ const InputMovieRating = ({ rating, onChange }) => {
       <div className="label__rating" >動画の評価</div>
       {
           <Rating
+          className="label__icon"
           emptySymbol={<FontAwesomeIcon icon={faStar} style={{ color: "#e4dccb" }} />}
           fullSymbol={<FontAwesomeIcon icon={faStar} style={{ color: "#ffd233" }} />}
           value={rating}

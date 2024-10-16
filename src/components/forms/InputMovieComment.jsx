@@ -2,7 +2,7 @@ const InputMovieComment = ({ register, errors }) => {
   return (
     <div className="formpart">
       <label className="label__comment" htmlFor="movie-comment">
-        動画タイトル
+        感想
       </label>
       <textarea
         {...register("comment", {
@@ -13,6 +13,7 @@ const InputMovieComment = ({ register, errors }) => {
         type="text"
         id="movie-comment"
         rows="3"
+        placeholder="感想"
       />
       {errors.comment && (
         <div className="error-msg">{errors.comment.message}</div>

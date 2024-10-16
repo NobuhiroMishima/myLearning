@@ -22,6 +22,10 @@ a {
   padding-left: 0;
   color: white;
 }
+.header__nav__font {
+  color: white;
+  font-weight: 700;
+}
 
 .container {
   max-width: 1040px;
@@ -126,6 +130,60 @@ a {
   color: white;
 }
 
+.form .movie__title {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.form .alert {
+  text-align: center;
+  font-weight: 700;
+  color: red;
+}
+.form .formpart {
+  display: flex;
+  row-gap: 10px;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.form .label__title, .form .label__instructor, .form .label__comment, .form .label__rating {
+  font-size: 14px;
+  font-weight: 700;
+}
+.form .label__img {
+  margin-bottom: 20px;
+}
+.form .input__title, .form .input__instructor {
+  padding: 16px;
+  width: 100%;
+  font-size: 16px;
+  color: white;
+  background-color: teal;
+  border-radius: 5px;
+  border: solid 2px darkslategray;
+}
+.form .input__title::-moz-placeholder, .form .input__instructor::-moz-placeholder {
+  color: white;
+}
+.form .input__title::placeholder, .form .input__instructor::placeholder {
+  color: white;
+}
+.form .textarea__comment {
+  padding: 16px;
+  width: 100%;
+  font-size: 16px;
+  color: white;
+  background-color: teal;
+  border-radius: 5px;
+  border: solid 2px darkslategray;
+}
+.form .textarea__comment::-moz-placeholder {
+  color: white;
+}
+.form .textarea__comment::placeholder {
+  color: white;
+}
+
 .modal-container {
   position: fixed;
   top: 0;
@@ -147,55 +205,48 @@ a {
   width: 90%;
   background-color: #CCE6E6;
 }
-.modal-container .modal.form .movie__title {
-  text-align: center;
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-.modal-container .modal.form .alert {
-  text-align: center;
-  font-weight: 700;
-  color: red;
-}
-.modal-container .modal.form .formpart {
+
+.small-container {
   display: flex;
-  row-gap: 10px;
-  flex-direction: column;
-  margin-bottom: 20px;
+  justify-content: center;
 }
-.modal-container .modal.form .label__title, .modal-container .modal.form .label__instructor, .modal-container .modal.form .label__rating {
-  font-size: 14px;
-  font-weight: 700;
+.small-container .form {
+  width: 600px;
+  color: #CCE6E6;
 }
-.modal-container .modal.form .input__title, .modal-container .modal.form .input__instructor {
-  padding: 16px;
-  width: 100%;
-  font-size: 16px;
-  color: white;
-  background-color: teal;
-  border-radius: 5px;
-  border: solid 2px darkslategray;
-}
-.modal-container .modal.form .input__title::-moz-placeholder, .modal-container .modal.form .input__instructor::-moz-placeholder {
+.small-container .form .movie__title {
   color: white;
 }
-.modal-container .modal.form .input__title::placeholder, .modal-container .modal.form .input__instructor::placeholder {
-  color: white;
+.small-container .form .input__title, .small-container .form .input__instructor {
+  color: black;
+  background-color: #CCE6E6;
+  border-radius: 10px;
+  border: solid 4px darkslategray;
 }
-.modal-container .modal.form .textarea__comment {
-  padding: 16px;
-  width: 100%;
-  font-size: 16px;
-  color: white;
-  background-color: teal;
-  border-radius: 5px;
-  border: solid 2px darkslategray;
+.small-container .form .input__title::-moz-placeholder, .small-container .form .input__instructor::-moz-placeholder {
+  color: darkslategray;
 }
-.modal-container .modal.form .textarea__comment::-moz-placeholder {
-  color: white;
+.small-container .form .input__title::placeholder, .small-container .form .input__instructor::placeholder {
+  color: darkslategray;
 }
-.modal-container .modal.form .textarea__comment::placeholder {
-  color: white;
+.small-container .form .textarea__comment {
+  color: black;
+  background-color: #CCE6E6;
+  border-radius: 10px;
+  border: solid 4px darkslategray;
+}
+.small-container .form .textarea__comment::-moz-placeholder {
+  color: darkslategray;
+}
+.small-container .form .textarea__comment::placeholder {
+  color: darkslategray;
+}
+.small-container .form .label__rating {
+  margin-bottom: 10px;
+}
+.small-container .form .label__icon > span svg {
+  width: 33px;
+  height: 33px;
 }
 
 label {

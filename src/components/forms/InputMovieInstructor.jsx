@@ -12,6 +12,7 @@ const InputMovieInstructor = ({ register, errors }) => {
         className="input__instructor"
         type="text"
         id="movie-instructor"
+        placeholder="講師"
       />
       {errors.instructor && <div className="error-msg">{errors.instructor.message}</div>}
     </div>

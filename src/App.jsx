@@ -3,6 +3,7 @@ import { MovieProvider } from "./contexts/MovieContext";
 import Header from "./components/Header";
 import Movies from "./pages/Movies";
 import Movie from "./pages/Movie";
+import NewMovie from "./pages/NewMovie";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Movies />} />
             <Route path="/movies/:id" element={<Movie />} />
+            <Route path="/new" element={<NewMovie />} />
           </Routes>
         </div>
       </MovieProvider>

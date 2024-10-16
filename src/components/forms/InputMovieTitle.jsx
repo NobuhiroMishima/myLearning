@@ -12,6 +12,7 @@ const InputMovieTitle = ({ register, errors }) => {
         className="input__title"
         type="text"
         id="movie-title"
+        placeholder="動画タイトル"
       />
       {errors.title && <div className="error-msg">{errors.title.message}</div>}
     </div>

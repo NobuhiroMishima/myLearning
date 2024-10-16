@@ -73,7 +73,6 @@ const EditModal = ({ toggleEditModal, movie, setMovie }) => {
         <InputMovieRating
           rating={editMovie.rating}
           onChange={handleChangeRating}
-          currentImage={movie.img} // オプションで現在の画像を表示
         />
 
         <div className="error-msg">{error}</div>

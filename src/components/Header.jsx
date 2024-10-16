@@ -10,7 +10,11 @@ const Header = () => {
         </div>
         <nav className="header__nav">
           <ul className="header__nav__list">
-            <li className="header__nav__item">新規投稿</li>
+            <li className="header__nav__item">
+              <Link className="header__nav__font" to="/new">
+                新規投稿
+              </Link>
+            </li>
           </ul>
         </nav>
       </header>

@@ -25,6 +25,11 @@ a{
             padding-left: 0;
             color: white;
         }
+
+        &__font{
+            color: white;
+            font-weight: 700;
+        }
     }
 }
 
@@ -136,6 +141,76 @@ a{
     }
 }
 
+.form{
+    & .movie__title{
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    & .alert{
+        text-align: center;
+        font-weight: 700;
+        color: red;
+    }
+
+    & .formpart{
+        display: flex;
+        row-gap: 10px;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    & .label{
+
+        &__title, &__instructor, &__comment, &__rating{
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        &__img{
+            margin-bottom: 20px;
+        }
+
+    }
+
+    & .input{
+
+        &__title, &__instructor{
+            padding: 16px;
+            width: 100%;
+            font-size: 16px;
+            color: white;
+            background-color: teal;
+            border-radius: 5px;
+            border: solid 2px darkslategray;
+
+            &::placeholder{
+                color: white;
+            }
+        }
+    }
+
+    & .textarea{
+
+        &__comment{
+            padding: 16px;
+            width: 100%;
+            font-size: 16px;
+            color: white;
+            background-color: teal;
+            border-radius: 5px;
+            border: solid 2px darkslategray;
+
+            &::placeholder{
+                color: white;
+            }
+        }
+    }
+
+}
+
+
 .modal-container{
     position: fixed;
     top: 0;
@@ -156,73 +231,61 @@ a{
         max-width: 600px;
         width: 90%;
         background-color: #CCE6E6;
-
-        &.form{
-            & .movie__title{
-                text-align: center;
-                font-size: 22px;
-                margin-bottom: 20px;
-            }
-
-            & .alert{
-                text-align: center;
-                font-weight: 700;
-                color: red;
-            }
-
-            & .formpart{
-                display: flex;
-                row-gap: 10px;
-                flex-direction: column;
-                margin-bottom: 20px;
-            }
-
-            & .label{
-
-                &__title, &__instructor, &__rating{
-                    font-size: 14px;
-                    font-weight: 700;
-                }
-
-            }
-
-            & .input{
-
-                &__title, &__instructor{
-                    padding: 16px;
-                    width: 100%;
-                    font-size: 16px;
-                    color: white;
-                    background-color: teal;
-                    border-radius: 5px;
-                    border: solid 2px darkslategray;
-
-                    &::placeholder{
-                        color: white;
-                    }
-                }
-            }
-
-            & .textarea{
-
-                &__comment{
-                    padding: 16px;
-                    width: 100%;
-                    font-size: 16px;
-                    color: white;
-                    background-color: teal;
-                    border-radius: 5px;
-                    border: solid 2px darkslategray;
-
-                    &::placeholder{
-                        color: white;
-                    }
-                }
-            }
-
-        }
     }
 }
+
+.small-container{
+    display: flex;
+    justify-content: center;
+
+    & .form{
+        width: 600px;
+        color: #CCE6E6;
+
+        & .movie__title{
+            color: white;
+        }
+
+        & .input{
+
+            &__title, &__instructor{
+                color: black;
+                background-color: #CCE6E6;
+                border-radius: 10px;
+                border: solid 4px darkslategray;
+    
+                &::placeholder{
+                    color: darkslategray;
+                }
+            }
+        }
+    
+        & .textarea{
+    
+            &__comment{
+                color: black;
+                background-color: #CCE6E6;
+                border-radius: 10px;
+                border: solid 4px darkslategray;
+    
+                &::placeholder{
+                    color: darkslategray;
+                }
+            }
+        }
+
+        & .label__rating{
+            margin-bottom: 10px;
+        }
+
+        & .label__icon>span svg{
+            width: 33px;
+            height: 33px;
+        }
+        
+    }
+}
+
 
 label{
     display: block;
