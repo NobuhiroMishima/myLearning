@@ -50,7 +50,7 @@ const Movie = () => {
   return (
     <>
       <div className="detail">
-        <h3 className="movie__title">{movie.title}</h3>
+        <h1 className="movie__title">{movie.title}</h1>
         <div className="movie__complete">
           <p className="movie__complete__title">完了日</p>
           <p className="movie__complete__body">{formatDate(movie.complete)}</p>

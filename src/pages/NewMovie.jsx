@@ -73,7 +73,7 @@ const NewMovie = () => {
   return (
     <div className="small-container">
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        <h3 className="movie__title">学習した動画を投稿しよう！</h3>
+        <h1 className="movie__title">学習した動画を投稿しよう！</h1>
         <InputMovieTitle register={register} errors={errors} />
         <InputMovieInstructor register={register} errors={errors} />
         <InputMovieComment register={register} errors={errors} />

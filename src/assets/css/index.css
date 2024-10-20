@@ -230,6 +230,7 @@ a {
 }
 .small-container .form .movie__title {
   color: white;
+  font-size: 30px;
 }
 .small-container .form .input__title, .small-container .form .input__instructor {
   color: black;
@@ -277,4 +278,30 @@ label {
 
 .error-msg {
   color: red;
+}
+
+.analytics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart {
+  width: 100%;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: #CCE6E6;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px;
+}
+.chart__title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.show-movies {
+  font-size: 16px;
+  padding: 10px 40px;
+  border-radius: 10px;
 }
