@@ -17,7 +17,7 @@ const movieSchema = Schema(
     },
     img: {
       type: String,
-      default: ''
+      required: true,
     },
     rating: {
       type: Number,

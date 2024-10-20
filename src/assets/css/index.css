@@ -146,6 +146,9 @@ a {
   flex-direction: column;
   margin-bottom: 20px;
 }
+.form .form-img {
+  margin-bottom: 20px;
+}
 .form .label__title, .form .label__instructor, .form .label__comment, .form .label__rating {
   font-size: 14px;
   font-weight: 700;

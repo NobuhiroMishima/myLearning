@@ -12,13 +12,13 @@ const reducer = (movies, { type, payload }) => {
     case "movie/init":
       return payload;
     case "movie/update":
-      const updateMovie = movies.filter(movie => (
-        movie._id !== payload._id
-      ));
-      updateMovie.unshift(payload)
-      return updateMovie
+      const updateMovie = movies.filter((movie) => movie._id !== payload._id);
+      updateMovie.unshift(payload);
+      return updateMovie;
     case "movie/delete":
-      return movies.filter(movie => movie._id !== payload._id);
+      return movies.filter((movie) => movie._id !== payload._id);
+    case "movie/add":
+      return [...movies, payload];
     default:
       return movies;
   }

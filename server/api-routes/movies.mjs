@@ -17,6 +17,8 @@ router.post('/',
     body('instructor').notEmpty(),
     body('rating').notEmpty().isInt({min: 1, max: 5}),
     body('comment').notEmpty(),
+    body('img').notEmpty(),
+    upload.single('img'),
     requestErrorHandler(registMovie)
 )
 

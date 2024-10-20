@@ -24,18 +24,33 @@ async function deleteMovie (req, res) {
 }
 
 async function registMovie (req, res) {
-    const errors = validationResult(req);
+    const errors = validationResult(req.body);
+    console.log(errors)
     if(!errors.isEmpty()){
         const errs =errors.array();
         return res.status(400).json(errs)
     }
-    const movie = new Movie(req.body);
+
+    const { title, instructor, rating, comment } = req.body;
+
+    const movie = new Movie({
+        title,
+        instructor,
+        rating,
+        comment,
+    });
+    if (req.file) {
+        movie.img = `/uploads/${req.file.filename}`;
+    }else{
+        movie.img = '/uploads/noMovie.png';
+    }
     const newMovie = await movie.save();
     res.status(201).json(newMovie)
 }
 
 async function updateMovie (req, res) {
     const errors = validationResult(req);
+    console.log(errors)
     if(!errors.isEmpty()){
         const errs =errors.array();
         return res.status(400).json(errs)

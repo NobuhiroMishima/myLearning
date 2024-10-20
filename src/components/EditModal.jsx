@@ -10,24 +10,35 @@ import { useForm } from "react-hook-form";
 import moviesApi from "../api/movies.mjs";
 
 const EditModal = ({ toggleEditModal, movie, setMovie }) => {
+  const PUBLIC_FOLDER = import.meta.env.VITE_PUBLIC_FOLDER
   const clickCancel = () => toggleEditModal();
   const dispatch = useDispatchMovies();
 
   const [editMovie, setEditMovie] = useState({ ...movie });
+  const [previewImage, setPreviewImage] = useState(
+    editMovie.img
+      ? `${PUBLIC_FOLDER}${editMovie.img}`
+      : `${PUBLIC_FOLDER}/uploads/noMovie.png`
+  );
 
-  const handleChangeRating = (rate) => setEditMovie({ ...editMovie, rating: rate });
+  const handleChangeRating = (rate) =>
+    setEditMovie({ ...editMovie, rating: rate });
 
   const handleChangeImage = (e) => {
     const file = e.target.files[0];
-    if(file) setValue("img", file)
-  }
+    if (file) {
+      setValue("img", file);
+      const imageUrl = URL.createObjectURL(file);
+      setPreviewImage(imageUrl);
+    }
+  };
 
   const {
     register,
     reset,
     handleSubmit,
     setValue,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
     mode: "onSubmit",
     reValidateMode: "onSubmit",
@@ -35,7 +46,7 @@ const EditModal = ({ toggleEditModal, movie, setMovie }) => {
       title: editMovie.title,
       instructor: editMovie.instructor,
       comment: editMovie.comment,
-      img: null
+      img: editMovie.img,
     },
   });
 
@@ -64,12 +75,17 @@ const EditModal = ({ toggleEditModal, movie, setMovie }) => {
 
   return (
     <div className="modal-container">
+      {console.log(`http://localhost:5173/server${editMovie.img}`)}
       <form className="modal form" onSubmit={handleSubmit(onSubmit)}>
         <h3 className="movie__title">{`${movie.title}を編集`}</h3>
         <InputMovieTitle register={register} errors={errors} />
         <InputMovieInstructor register={register} errors={errors} />
         <InputMovieComment register={register} errors={errors} />
-        <InputMovieImg register={register} handleChangeImage={handleChangeImage} />
+        <InputMovieImg
+          register={register}
+          handleChangeImage={handleChangeImage}
+          previewImage={previewImage}
+        />
         <InputMovieRating
           rating={editMovie.rating}
           onChange={handleChangeRating}

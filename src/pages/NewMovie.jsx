@@ -12,16 +12,25 @@ import moviesApi from "../api/movies.mjs";
 
 
 const NewMovie = () => {
+  const PUBLIC_FOLDER = import.meta.env.VITE_PUBLIC_FOLDER
+
   const dispatch = useDispatchMovies();
 
   const navigate = useNavigate();
 
   const [rating, setRating] = useState(1);
+  const [previewImage, setPreviewImage] = useState(`${PUBLIC_FOLDER}/uploads/noMovie.png`);
+
   const handleChangeRating = (rate) => setRating(rate);
 
   const handleChangeImage = (e) => {
     const file = e.target.files[0];
-    if(file) setValue("img", file)
+    if(file){
+      setValue("img", file);
+      const imageUrl = URL.createObjectURL(file);
+      console.log(imageUrl)
+      setPreviewImage(imageUrl);
+    }
   }
 
   const {
@@ -37,10 +46,17 @@ const NewMovie = () => {
 
   const [error, setError] = useState("");
   const onSubmit = async (inputs) => {
-    inputs.rating = rating;
+    const formData = new FormData();
+    formData.append("title", inputs.title);
+    formData.append("instructor", inputs.instructor);
+    formData.append("comment", inputs.comment);
+    formData.append("rating", rating);
+    if (inputs.img) {
+      formData.append("img", inputs.img);
+    }
 
     try{
-        const req = await moviesApi.post(inputs);
+        const req = await moviesApi.post(formData);
         dispatch({type: "movie/add", payload: req});
         reset();
         navigate('/');
@@ -60,13 +76,14 @@ const NewMovie = () => {
         <InputMovieImg
           register={register}
           handleChangeImage={handleChangeImage}
+          previewImage={previewImage}
         />
         <InputMovieRating
           rating={rating}
           onChange={handleChangeRating}
         />
 
-        <div className="error-msg">{error}</div>
+        <div className="error-msg">{error && error.message}</div>
 
         <div className="action-area">
           <Button type="submit" className="green">

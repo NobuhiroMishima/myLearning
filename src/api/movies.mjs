@@ -4,10 +4,18 @@ axios.interceptors.response.use(
   function (response) {
     return response;
   },
+  // function (error) {
+  //   return Promise.reject(
+  //     error.response.data.msg || "時間をおいてお試しください"
+  //   );
+  // }
   function (error) {
+    // サーバーからのエラーレスポンス全体を確認
+    console.error("APIエラー詳細:", error.response); 
+
     return Promise.reject(
-      error.response.data.msg || "時間をおいてお試しください"
-    );
+      error.response?.data?.msg || "詳細なエラーメッセージが返されていません"
+    )
   }
 );
 
@@ -28,6 +36,10 @@ const moviesApi = {
   },
   async delete(id) {
     const result = await axios.delete(`${ENDPOINT_URL}/${id}`);
+    return result.data;
+  },
+  async post(formData) {
+    const result = await axios.post(ENDPOINT_URL, formData);
     return result.data;
   },
 };
