@@ -17,6 +17,9 @@ a {
   align-items: center;
 }
 .header__nav__list {
+  display: flex;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
   list-style: none;
   font-size: 20px;
   padding-left: 0;

@@ -63,7 +63,7 @@ const NewMovie = () => {
       const req = await moviesApi.post(formData);
       dispatch({ type: "movie/add", payload: req });
       reset();
-      navigate("/");
+      navigate("/movies");
     } catch (e) {
       console.log("エラーが発生しました。", e);
       setError(e);

@@ -15,7 +15,7 @@ const DeleteModal = ({ toggleDeleteModal, movie }) => {
       await moviesApi.delete(movie._id);
       dispatch({type: "movie/delete", payload: movie});
       toggleDeleteModal();
-      navigate('/');
+      navigate('/movies');
     }catch(e){
       setError(e);
     }

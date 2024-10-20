@@ -45,7 +45,7 @@ const Movie = () => {
   const toggleDeleteModal = () => setIsDeleteModalOpen((prev) => !prev);
 
   const navigate = useNavigate();
-  const goHome = () => navigate('/');
+  const goMovies = () => navigate('/movies');
 
   return (
     <>
@@ -101,7 +101,7 @@ const Movie = () => {
       )}
 
       <div className="go-home">
-        <Button className="gray" onClick={goHome}>
+        <Button className="gray" onClick={goMovies}>
           戻る
         </Button>
       </div>

@@ -20,6 +20,8 @@ a{
 
     &__nav{
         &__list{
+            display: flex;
+            column-gap: 40px;
             list-style: none;
             font-size: 20px;
             padding-left: 0;

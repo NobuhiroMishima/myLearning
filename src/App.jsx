@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Movies from "./pages/Movies";
 import Movie from "./pages/Movie";
 import NewMovie from "./pages/NewMovie";
+import Analytics from "./pages/Analytics";
 
 function App() {
 
@@ -13,7 +14,8 @@ function App() {
         <Header />
         <div className="container">
           <Routes>
-            <Route path="/" element={<Movies />} />
+            <Route path="/" element={<Analytics />} />
+            <Route path="/movies" element={<Movies />} />
             <Route path="/movies/:id" element={<Movie />} />
             <Route path="/new" element={<NewMovie />} />
           </Routes>
