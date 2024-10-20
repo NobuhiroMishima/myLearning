@@ -19,6 +19,14 @@ const ModalPortal = ({ children }) => {
 const Movie = () => {
   const {id} = useParams();
 
+  const formatDate = (date) => {
+    const completeDate = new Date(date);
+    const year = completeDate.getFullYear();
+    const month = String(completeDate.getMonth() + 1).padStart(2, '0');
+    return `${year}/${month}`;
+  };
+  
+
   const [movie, setMovie] = useState({});
   const [error, setError] = useState('');
 
@@ -43,6 +51,10 @@ const Movie = () => {
     <>
       <div className="detail">
         <h3 className="movie__title">{movie.title}</h3>
+        <div className="movie__complete">
+          <p className="movie__complete__title">完了日</p>
+          <p className="movie__complete__body">{formatDate(movie.complete)}</p>
+        </div>
         <div className="movie__img">
           <img
             src={`/server/${movie.img}`}

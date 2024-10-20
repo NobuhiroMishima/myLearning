@@ -17,6 +17,7 @@ router.post('/',
     body('instructor').notEmpty(),
     body('rating').notEmpty().isInt({min: 1, max: 5}),
     body('comment').notEmpty(),
+    body('complete').notEmpty(),
     body('img').notEmpty(),
     upload.single('img'),
     requestErrorHandler(registMovie)
@@ -27,6 +28,7 @@ router.patch('/:id',
     body('instructor').optional().notEmpty(),
     body('rating').optional().notEmpty().isInt({min: 1, max: 5}),
     body('comment').optional().notEmpty(),
+    body('complete').optional().notEmpty(),
     upload.single('img'),
     requestErrorHandler(updateMovie)
 )

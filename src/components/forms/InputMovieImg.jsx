@@ -19,7 +19,7 @@ const InputMovieImg = ({ register, handleChangeImage, previewImage }) => {
         <img
           src={previewImage}
           alt="現在の画像"
-          style={{ maxWidth: "100px", height: "auto" }}
+          style={{ maxWidth: "150px", height: "auto" }}
         />
       </div>
     </div>

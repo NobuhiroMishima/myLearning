@@ -9,40 +9,42 @@ import { useState } from "react";
 import { useDispatchMovies } from "../contexts/MovieContext";
 import { useForm } from "react-hook-form";
 import moviesApi from "../api/movies.mjs";
-
+import { InputMovieComplete } from "../components/forms/InputMovieComplete";
 
 const NewMovie = () => {
-  const PUBLIC_FOLDER = import.meta.env.VITE_PUBLIC_FOLDER
+  const PUBLIC_FOLDER = import.meta.env.VITE_PUBLIC_FOLDER;
 
   const dispatch = useDispatchMovies();
 
   const navigate = useNavigate();
 
   const [rating, setRating] = useState(1);
-  const [previewImage, setPreviewImage] = useState(`${PUBLIC_FOLDER}/uploads/noMovie.png`);
+  const [previewImage, setPreviewImage] = useState(
+    `${PUBLIC_FOLDER}/uploads/noMovie.png`
+  );
 
   const handleChangeRating = (rate) => setRating(rate);
 
   const handleChangeImage = (e) => {
     const file = e.target.files[0];
-    if(file){
+    if (file) {
       setValue("img", file);
       const imageUrl = URL.createObjectURL(file);
-      console.log(imageUrl)
+      console.log(imageUrl);
       setPreviewImage(imageUrl);
     }
-  }
+  };
 
   const {
     register,
     reset,
     handleSubmit,
     setValue,
-    formState: {errors}
+    formState: { errors },
   } = useForm({
     mode: "onSubmit",
     revalidateMode: "onSubmit",
-  })
+  });
 
   const [error, setError] = useState("");
   const onSubmit = async (inputs) => {
@@ -51,20 +53,22 @@ const NewMovie = () => {
     formData.append("instructor", inputs.instructor);
     formData.append("comment", inputs.comment);
     formData.append("rating", rating);
+    formData.append("complete", inputs.complete);
+
     if (inputs.img) {
       formData.append("img", inputs.img);
     }
 
-    try{
-        const req = await moviesApi.post(formData);
-        dispatch({type: "movie/add", payload: req});
-        reset();
-        navigate('/');
-    }catch(e){
-        console.log("エラーが発生しました。", e);
-        setError(e);
+    try {
+      const req = await moviesApi.post(formData);
+      dispatch({ type: "movie/add", payload: req });
+      reset();
+      navigate("/");
+    } catch (e) {
+      console.log("エラーが発生しました。", e);
+      setError(e);
     }
-  }
+  };
 
   return (
     <div className="small-container">
@@ -78,10 +82,9 @@ const NewMovie = () => {
           handleChangeImage={handleChangeImage}
           previewImage={previewImage}
         />
-        <InputMovieRating
-          rating={rating}
-          onChange={handleChangeRating}
-        />
+        <InputMovieComplete register={register} errors={errors} />
+
+        <InputMovieRating rating={rating} onChange={handleChangeRating} />
 
         <div className="error-msg">{error && error.message}</div>
 

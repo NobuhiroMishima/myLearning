@@ -66,14 +66,14 @@ a {
      object-fit: cover;
   margin: 0 auto;
 }
-.movie__instructor, .movie__comment {
+.movie__instructor, .movie__comment, .movie__complete {
   margin-bottom: 10px;
 }
-.movie__instructor__title, .movie__comment__title {
+.movie__instructor__title, .movie__comment__title, .movie__complete__title {
   font-weight: 700;
   font-size: 16px;
 }
-.movie__instructor__body, .movie__comment__body {
+.movie__instructor__body, .movie__comment__body, .movie__complete__body {
   font-size: 14px;
 }
 
@@ -149,7 +149,7 @@ a {
 .form .form-img {
   margin-bottom: 20px;
 }
-.form .label__title, .form .label__instructor, .form .label__comment, .form .label__rating {
+.form .label__title, .form .label__instructor, .form .label__comment, .form .label__rating, .form .label__complete, .form .label__img {
   font-size: 14px;
   font-weight: 700;
 }
@@ -170,6 +170,14 @@ a {
 }
 .form .input__title::placeholder, .form .input__instructor::placeholder {
   color: white;
+}
+.form .input__complete {
+  width: 150px;
+  color: white;
+  background-color: teal;
+  border-radius: 5px;
+  border: solid 2px darkslategray;
+  cursor: pointer;
 }
 .form .textarea__comment {
   padding: 16px;
@@ -231,6 +239,14 @@ a {
 }
 .small-container .form .input__title::placeholder, .small-container .form .input__instructor::placeholder {
   color: darkslategray;
+}
+.small-container .form .input__complete {
+  color: black;
+  width: 150px;
+  background-color: #CCE6E6;
+  border-radius: 5px;
+  border: solid 2px darkslategray;
+  cursor: pointer;
 }
 .small-container .form .textarea__comment {
   color: black;

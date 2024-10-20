@@ -34,6 +34,10 @@ const movieSchema = Schema(
       type: String,
       required: true,
     },
+    complete: {
+      type: Date,
+      required: true,
+    },
   },
   { timestamps: true }
 );

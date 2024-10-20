@@ -31,13 +31,14 @@ async function registMovie (req, res) {
         return res.status(400).json(errs)
     }
 
-    const { title, instructor, rating, comment } = req.body;
+    const { title, instructor, rating, comment, complete } = req.body;
 
     const movie = new Movie({
         title,
         instructor,
         rating,
         comment,
+        complete
     });
     if (req.file) {
         movie.img = `/uploads/${req.file.filename}`;
@@ -55,7 +56,7 @@ async function updateMovie (req, res) {
         const errs =errors.array();
         return res.status(400).json(errs)
     }
-    const { title, instructor, rating, comment} = req.body;
+    const { title, instructor, rating, comment, complete} = req.body;
     const _id = req.params.id;
     const movie = await Movie.findById(_id);
 
@@ -65,6 +66,7 @@ async function updateMovie (req, res) {
     if(instructor !== undefined) movie.instructor = instructor;
     if(rating !== undefined) movie.rating = rating;
     if(comment !== undefined) movie.comment = comment;
+    if(complete !== undefined) movie.complete = complete;
     if(req.file) {
         movie.img = `/uploads/${req.file.filename}`;
     }

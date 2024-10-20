@@ -3,6 +3,7 @@ import InputMovieTitle from "./forms/InputMovieTitle";
 import InputMovieInstructor from "./forms/InputMovieInstructor";
 import InputMovieComment from "./forms/InputMovieComment";
 import InputMovieImg from "./forms/InputMovieImg";
+import { InputMovieComplete } from "./forms/InputMovieComplete";
 import InputMovieRating from "./forms/InputMovieRating";
 import { useDispatchMovies } from "../contexts/MovieContext";
 import { useState } from "react";
@@ -10,7 +11,7 @@ import { useForm } from "react-hook-form";
 import moviesApi from "../api/movies.mjs";
 
 const EditModal = ({ toggleEditModal, movie, setMovie }) => {
-  const PUBLIC_FOLDER = import.meta.env.VITE_PUBLIC_FOLDER
+  const PUBLIC_FOLDER = import.meta.env.VITE_PUBLIC_FOLDER;
   const clickCancel = () => toggleEditModal();
   const dispatch = useDispatchMovies();
 
@@ -20,6 +21,13 @@ const EditModal = ({ toggleEditModal, movie, setMovie }) => {
       ? `${PUBLIC_FOLDER}${editMovie.img}`
       : `${PUBLIC_FOLDER}/uploads/noMovie.png`
   );
+
+  const formatDate = (date) => {
+    const completeDate = new Date(date);
+    const year = completeDate.getFullYear();
+    const month = String(completeDate.getMonth() + 1).padStart(2, '0');
+    return `${year}-${month}`;
+  };
 
   const handleChangeRating = (rate) =>
     setEditMovie({ ...editMovie, rating: rate });
@@ -47,6 +55,7 @@ const EditModal = ({ toggleEditModal, movie, setMovie }) => {
       instructor: editMovie.instructor,
       comment: editMovie.comment,
       img: editMovie.img,
+      complete: formatDate(editMovie.complete)
     },
   });
 
@@ -57,6 +66,7 @@ const EditModal = ({ toggleEditModal, movie, setMovie }) => {
     formData.append("instructor", inputs.instructor);
     formData.append("comment", inputs.comment);
     formData.append("rating", editMovie.rating);
+    formData.append("complete", inputs.complete);
     if (inputs.img) {
       formData.append("img", inputs.img);
     }
@@ -75,7 +85,6 @@ const EditModal = ({ toggleEditModal, movie, setMovie }) => {
 
   return (
     <div className="modal-container">
-      {console.log(`http://localhost:5173/server${editMovie.img}`)}
       <form className="modal form" onSubmit={handleSubmit(onSubmit)}>
         <h3 className="movie__title">{`${movie.title}を編集`}</h3>
         <InputMovieTitle register={register} errors={errors} />
@@ -86,6 +95,8 @@ const EditModal = ({ toggleEditModal, movie, setMovie }) => {
           handleChangeImage={handleChangeImage}
           previewImage={previewImage}
         />
+        <InputMovieComplete register={register} errors={errors} />
+
         <InputMovieRating
           rating={editMovie.rating}
           onChange={handleChangeRating}

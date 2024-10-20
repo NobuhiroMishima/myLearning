@@ -74,7 +74,7 @@ a{
         }
     }
 
-    &__instructor, &__comment{
+    &__instructor, &__comment, &__complete{
         margin-bottom: 10px;
         &__title{
             font-weight: 700;
@@ -167,7 +167,7 @@ a{
 
     & .label{
 
-        &__title, &__instructor, &__comment, &__rating{
+        &__title, &__instructor, &__comment, &__rating, &__complete, &__img{
             font-size: 14px;
             font-weight: 700;
         }
@@ -192,6 +192,15 @@ a{
             &::placeholder{
                 color: white;
             }
+        }
+
+        &__complete{
+            width: 150px;
+            color: white;
+            background-color: teal;
+            border-radius: 5px;
+            border: solid 2px darkslategray;
+            cursor: pointer;
         }
     }
 
@@ -261,6 +270,15 @@ a{
                 &::placeholder{
                     color: darkslategray;
                 }
+            }
+            
+            &__complete{
+                color: black;
+                width: 150px;
+                background-color: #CCE6E6;
+                border-radius: 5px;
+                border: solid 2px darkslategray;
+                cursor: pointer;
             }
         }
     
