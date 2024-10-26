@@ -18,7 +18,7 @@ const reducer = (movies, { type, payload }) => {
     case "movie/delete":
       return movies.filter((movie) => movie._id !== payload._id);
     case "movie/add":
-      return [...movies, payload];
+      return [payload, ...movies];
     default:
       return movies;
   }

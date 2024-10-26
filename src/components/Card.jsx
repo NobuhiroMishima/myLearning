@@ -6,7 +6,7 @@ import Rating from "react-rating";
 const Card = ({ movie }) => {
   return (
     <Link className="movie" to={`/movies/${movie._id}`}>
-      <h3 className="movie__title">{movie.title}</h3>
+      <h3 className="movie__title limit">{movie.title}</h3>
       <div className="movie__rate">
         {
           <Rating
@@ -27,7 +27,7 @@ const Card = ({ movie }) => {
       </div>
       <div className="movie__comment">
         <p className="movie__comment__title">動画の感想</p>
-        <p className="movie__comment__body">{movie.comment}</p>
+        <p className="movie__comment__body limit">{movie.comment}</p>
       </div>
     </Link>
   );
