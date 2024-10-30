@@ -1,12 +1,14 @@
 import express from 'express';
 import { body } from "express-validator"
-import {getAllMovies, getMovieById, deleteMovie, registMovie, updateMovie } from '../controllers/movies.mjs';
+import {getAllMovies, getMoviesByPage, getMovieById, deleteMovie, registMovie, updateMovie } from '../controllers/movies.mjs';
 import { requestErrorHandler } from '../helpers/helper.mjs';
 import upload from '../helpers/upload.mjs'
 
 const router = express.Router();
 
 router.get('/', requestErrorHandler(getAllMovies))
+
+router.get('/page', requestErrorHandler(getMoviesByPage));
 
 router.get('/:id', requestErrorHandler(getMovieById))
 

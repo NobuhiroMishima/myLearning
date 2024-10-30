@@ -7,19 +7,29 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { useMovies } from "../contexts/MovieContext";
+import { useDispatchMovies, useMovies } from "../contexts/MovieContext";
 import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Link } from "react-router-dom";
+import moviesApi from "../api/movies.mjs";
 
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const Analytics = () => {
   const movies = useMovies();
+  const dispatch = useDispatchMovies();
   const [chartData, setChartData] = useState({
     labels: [],
     datasets: [],
   });
+
+  useEffect(() => {
+    const fetchAllMovies = async () => {
+      const res = await moviesApi.getAll();
+      dispatch({ type: "movie/init", payload: res });
+    };
+    fetchAllMovies();
+  }, []);
 
   useEffect(() => {
     if (movies.length) {

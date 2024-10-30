@@ -138,6 +138,19 @@ a{
     text-align: center;
 }
 
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+    font-size: 40px;
+    color: white;
+
+    &.end{
+        font-size: 24px;
+    }
+}
+
 .btn{
     padding: 8px 40px;
     font-size: 24px;

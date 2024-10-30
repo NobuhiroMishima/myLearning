@@ -6,6 +6,21 @@ async function getAllMovies(req, res) {
     res.json(movies)
 }
 
+async function getMoviesByPage(req, res) {
+    const { page = 1, limit = 12 } = req.query; // Default to page 1 and limit 12
+    const skip = (page - 1) * limit;
+
+    try {
+        const movies = await Movie.find()
+            .sort({ updatedAt: -1 })
+            .skip(parseInt(skip))
+            .limit(parseInt(limit));
+        res.json(movies);
+    } catch (error) {
+        res.status(500).json({ msg: 'Error fetching movies' });
+    }
+}
+
 async function getMovieById(req, res) {
     const _id = req.params.id;
     const movie = await Movie.findById(_id)
@@ -76,4 +91,4 @@ async function updateMovie (req, res) {
     res.json(updateMovie)
 }
 
-export {getAllMovies, getMovieById, deleteMovie, registMovie, updateMovie}
+export {getAllMovies, getMoviesByPage, getMovieById, deleteMovie, registMovie, updateMovie}

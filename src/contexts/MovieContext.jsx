@@ -11,6 +11,11 @@ const reducer = (movies, { type, payload }) => {
   switch (type) {
     case "movie/init":
       return payload;
+    case "movie/page":
+      const uniqueMovies = payload.filter(
+        (newMovie) => !movies.some((movie) => movie._id === newMovie._id)
+      );
+      return [...movies, ...uniqueMovies];
     case "movie/update":
       const updateMovie = movies.filter((movie) => movie._id !== payload._id);
       updateMovie.unshift(payload);
@@ -26,14 +31,6 @@ const reducer = (movies, { type, payload }) => {
 
 const MovieProvider = ({ children }) => {
   const [movies, dispatch] = useReducer(reducer, []);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      const res = await moviesApi.getAll();
-      dispatch({ type: "movie/init", payload: res });
-    };
-    fetchMovies();
-  }, []);
 
   return (
     <MovieContext.Provider value={movies}>
