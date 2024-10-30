@@ -322,6 +322,26 @@ label {
   align-items: center;
 }
 
+.topic {
+  display: flex;
+  flex-wrap: wrap;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  row-gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.topic .card {
+  background-color: #CCE6E6;
+  width: 235px;
+  height: 100px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.topic .card__number {
+  font-size: 30px;
+}
+
 .chart {
   width: 100%;
   padding: 40px;

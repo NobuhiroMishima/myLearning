@@ -36,7 +36,7 @@ const Movies = () => {
         next={loadMoreMovies}
         hasMore={hasMore}
         loader={<h4 className="loading">Loading...</h4>}
-        endMessage={<h4 className="loading end">すべてのコンテンツが表示されました。</h4>}
+        endMessage={<h4 className="loading end">すべての投稿が表示されました。</h4>}
       >
       <div className="movies__cards">
         {movies.map((movie) => (
