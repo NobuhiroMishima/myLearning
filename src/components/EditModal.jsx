@@ -9,6 +9,7 @@ import { useDispatchMovies } from "../contexts/MovieContext";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import moviesApi from "../api/movies.mjs";
+import noImageUrl from '/src/assets/images/noMovie.png';
 
 const EditModal = ({ toggleEditModal, movie, setMovie }) => {
   const PUBLIC_FOLDER = import.meta.env.VITE_PUBLIC_FOLDER;
@@ -19,7 +20,7 @@ const EditModal = ({ toggleEditModal, movie, setMovie }) => {
   const [previewImage, setPreviewImage] = useState(
     editMovie.img
       ? `${PUBLIC_FOLDER}${editMovie.img}`
-      : `${PUBLIC_FOLDER}/uploads/noMovie.png`
+      : {noImageUrl}
   );
 
   const formatDate = (date) => {

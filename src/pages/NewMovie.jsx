@@ -10,6 +10,8 @@ import { useDispatchMovies } from "../contexts/MovieContext";
 import { useForm } from "react-hook-form";
 import moviesApi from "../api/movies.mjs";
 import { InputMovieComplete } from "../components/forms/InputMovieComplete";
+import noImageUrl from '/src/assets/images/noMovie.png';
+
 
 const NewMovie = () => {
   const PUBLIC_FOLDER = import.meta.env.VITE_PUBLIC_FOLDER;
@@ -19,9 +21,7 @@ const NewMovie = () => {
   const navigate = useNavigate();
 
   const [rating, setRating] = useState(1);
-  const [previewImage, setPreviewImage] = useState(
-    `${PUBLIC_FOLDER}/uploads/noMovie.png`
-  );
+  const [previewImage, setPreviewImage] = useState(noImageUrl);
 
   const handleChangeRating = (rate) => setRating(rate);
 
