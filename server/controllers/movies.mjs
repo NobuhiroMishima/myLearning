@@ -53,13 +53,10 @@ async function registMovie (req, res) {
         instructor,
         rating,
         comment,
-        complete
+        complete,
+        img: req.file ? `/uploads/${req.file.filename}` : `${req.protocol}://${req.get('host')}/api/default-image`
     });
-    if (req.file) {
-        movie.img = `/uploads/${req.file.filename}`;
-    }else{
-        movie.img = '/uploads/noImage.png';
-    }
+
     const newMovie = await movie.save();
     res.status(201).json(newMovie)
 }
