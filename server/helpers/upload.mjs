@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const uploadDir = path.resolve(__dirname, '..', 'uploads');
+const uploadDir = path.resolve(__dirname, '..', 'dist', 'server', 'uploads');
 
 const ensureUploadDir = async () => {
   try {
