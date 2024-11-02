@@ -10,7 +10,7 @@ import { useDispatchMovies } from "../contexts/MovieContext";
 import { useForm } from "react-hook-form";
 import moviesApi from "../api/movies.mjs";
 import { InputMovieComplete } from "../components/forms/InputMovieComplete";
-import noImageUrl from '/src/assets/images/noMovie.png';
+import noImageUrl from '../assets/images/noMovie.png';
 
 
 const NewMovie = () => {

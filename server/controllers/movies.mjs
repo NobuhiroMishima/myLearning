@@ -58,7 +58,7 @@ async function registMovie (req, res) {
     if (req.file) {
         movie.img = `/uploads/${req.file.filename}`;
     }else{
-        movie.img = {noImageUrl};
+        movie.img = '/uploads/noImage.png';
     }
     const newMovie = await movie.save();
     res.status(201).json(newMovie)
