@@ -12,7 +12,8 @@ export default defineConfig({
           src: 'server/uploads',
           dest: 'server'
         },
-      ]
+      ],
+      errorOnMissing: false, // ファイルが存在しない場合にエラーを無視
     })
   ],
   server: {
