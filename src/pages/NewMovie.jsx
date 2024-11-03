@@ -30,7 +30,6 @@ const NewMovie = () => {
     if (file) {
       setValue("img", file);
       const imageUrl = URL.createObjectURL(file);
-      console.log(imageUrl);
       setPreviewImage(imageUrl);
     }
   };

@@ -1,5 +1,6 @@
 import { validationResult } from "express-validator"
 import Movie from '../models/movie.mjs';
+import dotenv from 'dotenv';
 
 async function getAllMovies(req, res) {
     const movies = await Movie.find().sort({updatedAt: -1})
@@ -40,7 +41,6 @@ async function deleteMovie (req, res) {
 
 async function registMovie (req, res) {
     const errors = validationResult(req.body);
-    console.log(errors)
     if(!errors.isEmpty()){
         const errs =errors.array();
         return res.status(400).json(errs)
@@ -48,13 +48,16 @@ async function registMovie (req, res) {
 
     const { title, instructor, rating, comment, complete } = req.body;
 
+    const baseURL = process.env.BASE_URL || `${req.protocol}://${req.get('host')}`;
+    const imageURL = req.file ? `/uploads/${req.file.filename}` : `${baseURL}/api/default-image`;
+
     const movie = new Movie({
         title,
         instructor,
         rating,
         comment,
         complete,
-        img: req.file ? `/uploads/${req.file.filename}` : `${req.protocol}://${req.get('host')}/api/default-image`
+        img: imageURL
     });
 
     const newMovie = await movie.save();
@@ -63,7 +66,6 @@ async function registMovie (req, res) {
 
 async function updateMovie (req, res) {
     const errors = validationResult(req);
-    console.log(errors)
     if(!errors.isEmpty()){
         const errs =errors.array();
         return res.status(400).json(errs)
