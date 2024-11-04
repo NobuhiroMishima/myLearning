@@ -12,15 +12,15 @@ import moviesApi from "../api/movies.mjs";
 import noImageUrl from '/src/assets/images/noMovie.png';
 
 const EditModal = ({ toggleEditModal, movie, setMovie }) => {
-  const PUBLIC_FOLDER = import.meta.env.VITE_PUBLIC_FOLDER;
+  const PUBLIC_FOLDER = import.meta.env.BASE_URL;
   const clickCancel = () => toggleEditModal();
   const dispatch = useDispatchMovies();
 
   const [editMovie, setEditMovie] = useState({ ...movie });
   const [previewImage, setPreviewImage] = useState(
     editMovie.img
-      ? `${PUBLIC_FOLDER}${editMovie.img}`
-      : {noImageUrl}
+      ? editMovie.img
+      : noImageUrl
   );
 
   const formatDate = (date) => {
