@@ -15,8 +15,6 @@ const port = process.env.PORT || 8080;
 app.use(express.static('dist'));
 app.use(express.json());
 
-app.use('/uploads', express.static(path.join(__dirname, 'dist', 'server', 'uploads')));
-
 app.use('/api', apiRoutes);
 
 app.get('*', function(req, res) {

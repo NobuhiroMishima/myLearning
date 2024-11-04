@@ -12,6 +12,7 @@ build
 uploads/*
 !uploads/.gitkeep
 .env
+google-credentials.json
 dist
 dist-ssr
 *.local
