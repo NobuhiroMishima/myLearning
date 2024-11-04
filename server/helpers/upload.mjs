@@ -6,9 +6,11 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const keyFilename = process.env.GOOGLE_APPLICATION_CREDENTIALS || '../../google-credentials.json';
+
 const storage = new Storage({
   projectId: "mylearning-440311",
-  keyFilename: path.resolve(__dirname, process.env.GOOGLE_APPLICATION_CREDENTIALS),
+  keyFilename: path.resolve(__dirname, keyFilename),
 });
 
 const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
