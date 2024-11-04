@@ -9,7 +9,6 @@
     "dev:api": "nodemon server/app.mjs",
     "dev:client": "vite",
     "build": "vite build",
-    "postbuild": "mkdir -p dist/server/uploads",
     "lint": "eslint .",
     "preview": "vite preview"
   },
