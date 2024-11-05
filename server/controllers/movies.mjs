@@ -52,7 +52,7 @@ async function registMovie(req, res) {
   const { title, instructor, rating, comment, complete } = req.body;
   
   const baseURL =
-  process.env.BASE_URL || `${req.protocol}://${req.get("host")}`;
+  process.env.BASE_URL || 'https://mylearning-yq4s.onrender.com';
   const imageURL = req.file
   ? await uploadToGCS(req.file)
   : `${baseURL}/api/default-image`;

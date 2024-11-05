@@ -36,23 +36,58 @@ const upload = multer({
   },
 });
 
+// const uploadToGCS = async (file) => {
+//   const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
+//   const ext = path.extname(file.originalname);
+//   const blob = bucket.file(`${file.originalname}-${uniqueSuffix}${ext}`);
+
+//   const blobStream = blob.createWriteStream({
+//     resumable: false,
+//     contentType: file.mimetype,
+//   });
+
+//   blobStream.end(file.buffer);
+
+//   return new Promise((resolve, reject) => {
+//     blobStream.on('finish', () => {
+//       resolve(blob.publicUrl());
+//     });
+//     blobStream.on("error", (err) => {
+//       reject(`Unable to upload image, something went wrong: ${err}`);
+//     });
+//   });
+// };
+
 const uploadToGCS = async (file) => {
+  // 1. ユニークなファイル名の生成確認
   const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
   const ext = path.extname(file.originalname);
-  const blob = bucket.file(`${file.originalname}-${uniqueSuffix}${ext}`);
+  const fileName = `${file.originalname}-${uniqueSuffix}${ext}`;
+  console.log("Generated file name:", fileName);
 
+  // 2. GCS バケットとファイルパスの確認
+  const blob = bucket.file(fileName);
+  console.log("Bucket name:", process.env.GCS_BUCKET_NAME);
+  console.log("File path in GCS:", blob.name);
+
+  // 3. 書き込みストリームの設定確認
   const blobStream = blob.createWriteStream({
     resumable: false,
     contentType: file.mimetype,
   });
+  console.log("MIME type:", file.mimetype);
 
+  // 4. ストリームの終了確認
   blobStream.end(file.buffer);
 
+  // 5. アップロード完了/エラーハンドリング
   return new Promise((resolve, reject) => {
-    blobStream.on('finish', () => {
+    blobStream.on("finish", () => {
+      console.log("Upload finished successfully. File URL:", blob.publicUrl());
       resolve(blob.publicUrl());
     });
     blobStream.on("error", (err) => {
+      console.error("Upload error:", err);
       reject(`Unable to upload image, something went wrong: ${err}`);
     });
   });
