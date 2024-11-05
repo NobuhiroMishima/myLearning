@@ -14,7 +14,7 @@ import noImageUrl from '../assets/images/noMovie.png';
 
 
 const NewMovie = () => {
-  const PUBLIC_FOLDER = import.meta.env.VITE_PUBLIC_FOLDER;
+  // const PUBLIC_FOLDER = import.meta.env.VITE_PUBLIC_FOLDER;
 
   const dispatch = useDispatchMovies();
 

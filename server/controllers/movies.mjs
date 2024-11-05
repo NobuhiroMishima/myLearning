@@ -1,6 +1,8 @@
 import { validationResult } from "express-validator";
 import Movie from "../models/movie.mjs";
 import { uploadToGCS } from '../helpers/upload.mjs';
+import env from "dotenv";
+env.config();
 
 async function getAllMovies(req, res) {
   const movies = await Movie.find().sort({ updatedAt: -1 });

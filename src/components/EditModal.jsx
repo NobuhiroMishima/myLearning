@@ -12,7 +12,7 @@ import moviesApi from "../api/movies.mjs";
 import noImageUrl from '/src/assets/images/noMovie.png';
 
 const EditModal = ({ toggleEditModal, movie, setMovie }) => {
-  const PUBLIC_FOLDER = import.meta.env.BASE_URL;
+  // const PUBLIC_FOLDER = import.meta.env.BASE_URL;
   const clickCancel = () => toggleEditModal();
   const dispatch = useDispatchMovies();
 
