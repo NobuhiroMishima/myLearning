@@ -3,6 +3,7 @@ import { body } from "express-validator"
 import {getAllMovies, getMoviesByPage, getMovieById, deleteMovie, registMovie, updateMovie } from '../controllers/movies.mjs';
 import { requestErrorHandler } from '../helpers/helper.mjs';
 import upload from '../helpers/upload.mjs'
+import ipCheck from '../helpers/ipCheck.mjs'
 
 const router = express.Router();
 
@@ -12,7 +13,7 @@ router.get('/page', requestErrorHandler(getMoviesByPage));
 
 router.get('/:id', requestErrorHandler(getMovieById))
 
-router.delete('/:id', requestErrorHandler(deleteMovie))
+router.delete('/:id', ipCheck, requestErrorHandler(deleteMovie))
 
 router.post('/',
     body('title').notEmpty(),
@@ -22,6 +23,7 @@ router.post('/',
     body('complete').notEmpty(),
     body('img').notEmpty(),
     upload.single('img'),
+    ipCheck,
     requestErrorHandler(registMovie)
 )
 
@@ -32,6 +34,7 @@ router.patch('/:id',
     body('comment').optional().notEmpty(),
     body('complete').optional().notEmpty(),
     upload.single('img'),
+    ipCheck,
     requestErrorHandler(updateMovie)
 )
 

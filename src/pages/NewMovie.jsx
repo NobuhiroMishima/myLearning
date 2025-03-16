@@ -84,7 +84,7 @@ const NewMovie = () => {
 
         <InputMovieRating rating={rating} onChange={handleChangeRating} />
 
-        <div className="error-msg">{error && error.message}</div>
+        <div className="error-msg">{error}</div>
 
         <div className="action-area">
           <Button type="submit" className="green">
