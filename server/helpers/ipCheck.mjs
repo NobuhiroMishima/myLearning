@@ -11,6 +11,7 @@ function ipCheck(req, res, next) {
   if (requestIP.startsWith("::ffff:")) {
     requestIP = requestIP.substring(7);
   }
+  console.log(`[${new Date().toISOString()}] Client IP: ${requestIP}`);
   
   if (allowedIPs.includes(requestIP)) {
     next();
