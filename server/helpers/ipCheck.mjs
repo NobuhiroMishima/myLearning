@@ -1,7 +1,7 @@
 import env from "dotenv";
 env.config();
 
-const allowedIPs = (process.env.ALLOWED_IPS || "").split(",").map(ip => ip.trim());
+const allowedIPs = JSON.parse(process.env.ALLOWED_IPS);
 
 function ipCheck(req, res, next) {
   let requestIP = req.headers['x-forwarded-for']
